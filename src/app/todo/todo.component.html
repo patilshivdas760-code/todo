@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="page-bg">
+    <div class="row my-3">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="toditem"> <strong>TODOITEM</strong> </label>
+                <input #todoitem type="text" class="form-control">
+            </div>
+            <button (click)="ontodoadd(  )" class="btn-block mb-2" mat-raised-button color="primary">add</button>
+        </div>
+        <div class="col-md-6">
+            <ul class="list-group" *ngIf="todoarr.length > 0; else notodo">
+                <li *ngFor="let t of todoarr; trackBy : trackbyid"
+                    class="list-group-item d-flex justify-content-between align-items-center">
+                    <strong>
+                        {{t.toditem}}
+                    </strong>
+                    <div>
+                        <button class="mr-2" mat-flat-button color="primary">edit</button>
+                        <button (click)="removetodo( t.todoid)" mat-flat-button color="warn">delete</button>
+                    </div>
+                </li>
+            </ul>
+            <ng-template #notodo>
+                <p class="alert alert-warning"> TODO'S' ARE EMPTY !!! </p>
+            </ng-template>
+        </div>
+        </div>
+    </div>
+</div>
