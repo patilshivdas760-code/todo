@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="bikename"> <strong> BIKES </strong></label>
+                <input #biker type="text" class="form-control">
+            </div>
+            <button (click)="onbikeadd()" class="btn-block mb-2" mat-raised-button color="primary"> add </button>
+        </div>
+
+        <div class="col-md-6">
+            <ul class="list-group" *ngIf="bikearr.length > 0; else nobikes">
+                <li *ngFor="let b of bikearr; trackby:trackid" class="list-group-item d-flex justify-content-between align-items-center">
+                  <strong> {{b.bikename}} </strong>
+                    <div>
+                        <button class="mr-2" mat-flat-button color="primary">edit</button>
+                        <button (click)="removebike (b.bikeid)" mat-flat-button color="warn">remove</button>
+                    </div>
+                </li>
+            </ul>
+
+            <ng-template #nobikes>
+                <P class="alert alert-warning"> BIKES IS NOT AVAILBEL </P>
+            </ng-template>
+        </div>
+    </div>
+</div>
